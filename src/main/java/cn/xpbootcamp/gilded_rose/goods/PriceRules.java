@@ -1,5 +1,7 @@
 package cn.xpbootcamp.gilded_rose.goods;
 
+import cn.xpbootcamp.gilded_rose.Exceptions.InvalidDateException;
+
 import java.time.LocalDate;
 
 public class PriceRules {
@@ -15,6 +17,9 @@ public class PriceRules {
 
     public static PriceRules price(Goods goods, LocalDate date) {
         int duration = date.compareTo(goods.getManufacturing());
+        if (duration < 0) {
+            throw new InvalidDateException("invalid date");
+        }
         return new PriceRules(goods, negativeToZero(goods.getQuality() - duration), date);
     }
 
