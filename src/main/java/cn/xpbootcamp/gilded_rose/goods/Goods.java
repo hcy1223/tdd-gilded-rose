@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.AGED_BRIE;
 import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.COMMON;
-import static cn.xpbootcamp.gilded_rose.goods.PriceRules.price;
+import static cn.xpbootcamp.gilded_rose.rules.RulesHandler.quality;
 
 public class Goods {
     private String name;
@@ -86,10 +86,14 @@ public class Goods {
     }
 
     public int getQuality(LocalDate date) {
-        return price(this, date).getQuality();
+        return quality(this, date);
     }
 
     public LocalDate getManufacturing() {
         return manufacturing;
+    }
+
+    public GoodsTypes getType() {
+        return type;
     }
 }

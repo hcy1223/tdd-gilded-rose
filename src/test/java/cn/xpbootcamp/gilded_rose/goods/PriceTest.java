@@ -59,4 +59,17 @@ public class PriceTest extends TestBase {
 
         assertEquals(apple.getQuality(date(2020, 5, 10)), 0);
     }
+
+    @Test
+    void should_get_the_price_of_aged_brie() {
+        Goods agedBrie = Goods.createAgedBrie()
+                .name("aged brie")
+                .sellIn(10)
+                .quality(11)
+                .manufacturing(date(2020, 3, 1))
+                .build();
+
+        assertEquals(agedBrie.getQuality(date(2020, 3, 21)), 31);
+        assertEquals(agedBrie.getQuality(date(2020, 4, 21)), 50);
+    }
 }
