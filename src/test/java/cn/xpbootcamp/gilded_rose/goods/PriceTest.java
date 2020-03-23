@@ -101,4 +101,20 @@ public class PriceTest extends TestBase {
         assertEquals(backstagePass.getQuality(date(2020,4,1)), 0);
     }
 
+    @Test
+    void should_get_price_of_backstage_pass_when_sellIn_lower_than_ten() {
+        Goods backstagePass = createBackstagePass()
+                .name("backstage pass")
+                .sellIn(9)
+                .quality(3)
+                .manufacturing(date(2020, 3, 1))
+                .build();
+//        3+3*2
+        assertEquals(backstagePass.getQuality(date(2020,3,4)), 9);
+//        3+4*2+3*3
+        assertEquals(backstagePass.getQuality(date(2020,3,8)), 20);
+
+        assertEquals(backstagePass.getQuality(date(2020,4,1)), 0);
+
+    }
 }

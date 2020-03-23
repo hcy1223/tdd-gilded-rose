@@ -27,9 +27,9 @@ public class BackstagePass implements Rules {
             }
 
         } else if (goods.getSellIn() > 5) {
-            return goods.getSellIn() - duration > 5 ? duration : duration * 3 - goods.getSellIn() + 5;
+            return goods.getQuality() + (goods.getSellIn() - duration > 5 ? duration * 2 : duration * 3 - goods.getSellIn() + 5);
         } else {
-            return duration * 3;
+            return goods.getQuality() + duration * 3;
         }
     }
 }
