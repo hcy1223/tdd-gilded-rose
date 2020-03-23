@@ -72,4 +72,14 @@ public class PriceTest extends TestBase {
         assertEquals(agedBrie.getQuality(date(2020, 3, 21)), 31);
         assertEquals(agedBrie.getQuality(date(2020, 4, 21)), 50);
     }
+
+    @Test
+    void should_get_instant_the_price_of_sulfuras() {
+        Goods sulfuras = Goods.createSulfuras()
+                .name("sulfuras")
+                .quality(11)
+                .manufacturing(date(2020, 3, 1))
+                .build();
+        assertEquals(sulfuras.getQuality(date(2020,4,1)), 11);
+    }
 }
