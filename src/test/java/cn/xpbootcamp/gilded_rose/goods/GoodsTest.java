@@ -52,30 +52,47 @@ public class GoodsTest {
 
     @Test
     void should_create_aged_brie() {
-        createAgedBrie()
+        Goods agedBrie = createAgedBrie()
                 .name("aged brie")
                 .sellIn(30)
                 .quality(45)
                 .manufacturing(LocalDate.now())
                 .build();
+
+        assertNotNull(agedBrie);
+        assertEquals(agedBrie.getName(), "aged brie");
+        assertEquals(agedBrie.getSellIn(), 30);
+        assertEquals(agedBrie.getQuality(), 45);
+        assertEquals(agedBrie.getManufacturing(), LocalDate.now());
     }
 
     @Test
     void should_create_sulfuras() {
-        createSulfuras()
+        Goods sulfuras = createSulfuras()
                 .name("sulfuras")
                 .quality(10)
                 .manufacturing(LocalDate.now())
                 .build();
+
+        assertNotNull(sulfuras);
+        assertEquals(sulfuras.getName(), "sulfuras");
+        assertEquals(sulfuras.getQuality(), 10);
+        assertEquals(sulfuras.getManufacturing(), LocalDate.now());
     }
 
     @Test
     void should_create_backstage_pass() {
-        createBackstagePass()
+        Goods backstagePass = createBackstagePass()
                 .name("backstage pass")
                 .sellIn(15)
                 .quality(3)
                 .manufacturing(LocalDate.now())
                 .build();
+
+        assertNotNull(backstagePass);
+        assertEquals(backstagePass.getName(), "backstage pass");
+        assertEquals(backstagePass.getSellIn(), 15);
+        assertEquals(backstagePass.getQuality(), 3);
+        assertEquals(backstagePass.getManufacturing(), LocalDate.now());
     }
 }
