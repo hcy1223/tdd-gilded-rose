@@ -68,4 +68,14 @@ public class GoodsTest {
                 .manufacturing(LocalDate.now())
                 .build();
     }
+
+    @Test
+    void should_create_backstage_pass() {
+        createBackstagePass()
+                .name("backstage pass")
+                .sellIn(15)
+                .quality(3)
+                .manufacturing(LocalDate.now())
+                .build();
+    }
 }

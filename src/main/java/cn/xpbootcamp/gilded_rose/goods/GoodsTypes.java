@@ -4,5 +4,6 @@ public enum GoodsTypes {
 
     COMMON,
     AGED_BRIE,
-    SULFURAS
+    SULFURAS,
+    BACKSTAGE_PASS
 }

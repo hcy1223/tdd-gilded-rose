@@ -36,6 +36,10 @@ public class Goods {
         return builder;
     }
 
+    public static Builder createBackstagePass() {
+        return new Builder(BACKSTAGE_PASS);
+    }
+
     public static class Builder {
         private String name;
         private int sellIn;
