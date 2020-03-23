@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
+import static cn.xpbootcamp.gilded_rose.goods.Goods.createAgedBrie;
 import static cn.xpbootcamp.gilded_rose.goods.Goods.createGoods;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,5 +49,15 @@ public class GoodsTest {
                     .manufacturing(LocalDate.now())
                     .build();
         });
+    }
+
+    @Test
+    void should_creat_aged_brie() {
+        createAgedBrie()
+                .name("aged brie")
+                .sellIn(30)
+                .quality(45)
+                .manufacturing(LocalDate.now())
+                .build();
     }
 }

@@ -4,6 +4,8 @@ import cn.xpbootcamp.gilded_rose.Exceptions.InvalidQualityException;
 
 import java.time.LocalDate;
 
+import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.AGED_BRIE;
+import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.COMMON;
 import static cn.xpbootcamp.gilded_rose.goods.PriceRules.price;
 
 public class Goods {
@@ -11,16 +13,22 @@ public class Goods {
     private int sellIn;
     private int quality;
     private LocalDate manufacturing;
+    private GoodsTypes type;
 
-    private Goods(String name, int sellIn, int quality, LocalDate manufacturing) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-        this.manufacturing = manufacturing;
+    private Goods(Builder builder) {
+        this.name = builder.name;
+        this.sellIn = builder.sellIn;
+        this.quality = builder.quality;
+        this.manufacturing = builder.manufacturing;
+        this.type = builder.type;
     }
 
     public static Builder createGoods() {
-        return new Builder();
+        return new Builder(COMMON);
+    }
+
+    public static Builder createAgedBrie() {
+        return new Builder(AGED_BRIE);
     }
 
     public static class Builder {
@@ -28,6 +36,11 @@ public class Goods {
         private int sellIn;
         private int quality;
         private LocalDate manufacturing;
+        private GoodsTypes type;
+
+        public Builder(GoodsTypes type) {
+            this.type = type;
+        }
 
         public Builder name(String name) {
             this.name = name;
@@ -56,7 +69,7 @@ public class Goods {
         }
 
         public Goods build() {
-            return new Goods(this.name, this.sellIn, this.quality, this.manufacturing);
+            return new Goods(this);
         }
     }
 
