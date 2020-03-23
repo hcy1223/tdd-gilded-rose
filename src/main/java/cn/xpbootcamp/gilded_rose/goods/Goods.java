@@ -4,6 +4,8 @@ import cn.xpbootcamp.gilded_rose.Exceptions.InvalidQualityException;
 
 import java.time.LocalDate;
 
+import static cn.xpbootcamp.gilded_rose.goods.PriceRules.price;
+
 public class Goods {
     private String name;
     private int sellIn;
@@ -68,6 +70,10 @@ public class Goods {
 
     public int getQuality() {
         return quality;
+    }
+
+    public int getQuality(LocalDate date) {
+        return price(this, date).getQuality();
     }
 
     public LocalDate getManufacturing() {
