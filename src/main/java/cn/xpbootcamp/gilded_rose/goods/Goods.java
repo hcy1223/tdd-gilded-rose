@@ -1,5 +1,7 @@
 package cn.xpbootcamp.gilded_rose.goods;
 
+import cn.xpbootcamp.gilded_rose.Exceptions.InvalidQualityException;
+
 import java.time.LocalDate;
 
 public class Goods {
@@ -7,6 +9,9 @@ public class Goods {
     private Integer sellIn;
     private Integer quality;
     private LocalDate manufacturing;
+
+    public Goods() {
+    }
 
     public Goods(String name, Integer sellIn, Integer quality, LocalDate manufacturing) {
         this.name = name;
@@ -36,6 +41,9 @@ public class Goods {
     }
 
     public void setQuality(Integer quality) {
+        if (quality < 0) {
+            throw new InvalidQualityException("the quality of goods is lower than 0");
+        }
         this.quality = quality;
     }
 
