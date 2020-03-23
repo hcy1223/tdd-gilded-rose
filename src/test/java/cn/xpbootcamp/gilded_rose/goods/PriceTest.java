@@ -51,4 +51,19 @@ public class PriceTest {
 //        50-30*1-(38-30)*2
         assertEquals(applePrice.getQuality(), 4);
     }
+
+    @Test
+    void should_get_zero_when_after_a_long_time() {
+        Goods apple = createGoods()
+                .name("apple")
+                .sellIn(30)
+                .quality(50)
+                .manufacturing(LocalDate.of(2020, 3, 3))
+                .build();
+
+        PriceRules applePrice = price(apple, LocalDate.of(2020, 5, 10));
+
+        assertEquals(applePrice.getQuality(), 0);
+
+    }
 }
