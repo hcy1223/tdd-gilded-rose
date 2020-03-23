@@ -16,11 +16,14 @@ public class PriceRules {
     }
 
     public static PriceRules price(Goods goods, LocalDate date) {
-        int duration = date.compareTo(goods.getManufacturing());
+        int duration = (int) (date.toEpochDay() - goods.getManufacturing().toEpochDay());
         if (duration < 0) {
             throw new InvalidDateException("invalid date");
         }
-        return new PriceRules(goods, negativeToZero(goods.getQuality() - duration), date);
+        if (duration <= goods.getSellIn()) {
+            return new PriceRules(goods, negativeToZero(goods.getQuality() - duration), date);
+        }
+        return new PriceRules(goods, negativeToZero(goods.getQuality() + goods.getSellIn() - duration * 2), date);
     }
 
     private static Integer negativeToZero(Integer number) {
