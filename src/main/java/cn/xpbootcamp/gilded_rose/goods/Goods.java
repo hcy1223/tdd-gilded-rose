@@ -4,8 +4,7 @@ import cn.xpbootcamp.gilded_rose.Exceptions.InvalidQualityException;
 
 import java.time.LocalDate;
 
-import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.AGED_BRIE;
-import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.COMMON;
+import static cn.xpbootcamp.gilded_rose.goods.GoodsTypes.*;
 import static cn.xpbootcamp.gilded_rose.rules.RulesHandler.quality;
 
 public class Goods {
@@ -29,6 +28,12 @@ public class Goods {
 
     public static Builder createAgedBrie() {
         return new Builder(AGED_BRIE);
+    }
+
+    public static Builder createSulfuras() {
+        Builder builder = new Builder(SULFURAS);
+        builder.sellIn(Integer.MAX_VALUE);
+        return builder;
     }
 
     public static class Builder {
