@@ -41,6 +41,9 @@ public class Goods {
             if (quality < 0) {
                 throw new InvalidQualityException("the quality of goods is lower than 0");
             }
+            if (quality > 50) {
+                throw new InvalidQualityException("the quality of goods is higher than 50");
+            }
             this.quality = quality;
             return this;
         }

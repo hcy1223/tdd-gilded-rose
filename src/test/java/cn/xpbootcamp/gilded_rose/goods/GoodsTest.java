@@ -37,4 +37,17 @@ public class GoodsTest {
                     .build();
         });
     }
+
+    @Test
+    void should_not_create_goods_when_quality_is_higher_than_fifty() {
+        assertThrows(InvalidQualityException.class, () -> {
+            createGoods()
+                    .name("goods")
+                    .sellIn(30)
+                    .quality(51)
+                    .manufacturing(LocalDate.now())
+                    .build();
+        });
+    }
+
 }
