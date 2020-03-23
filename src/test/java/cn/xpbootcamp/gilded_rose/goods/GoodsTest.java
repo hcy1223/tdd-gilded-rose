@@ -21,8 +21,8 @@ public class GoodsTest {
                 .build();
         assertNotNull(newGoods);
         assertEquals(newGoods.getName(), "goods");
-        assertEquals(newGoods.getSellIn(), new Integer(30));
-        assertEquals(newGoods.getQuality(), new Integer(20));
+        assertEquals(newGoods.getSellIn(), 30);
+        assertEquals(newGoods.getQuality(), 20);
         assertEquals(newGoods.getManufacturing(), LocalDate.now());
     }
 

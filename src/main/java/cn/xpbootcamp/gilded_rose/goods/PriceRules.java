@@ -26,7 +26,7 @@ public class PriceRules {
         return new PriceRules(goods, negativeToZero(goods.getQuality() + goods.getSellIn() - duration * 2), date);
     }
 
-    private static Integer negativeToZero(Integer number) {
+    private static int negativeToZero(int number) {
         return number < 0 ? 0 : number;
     }
 

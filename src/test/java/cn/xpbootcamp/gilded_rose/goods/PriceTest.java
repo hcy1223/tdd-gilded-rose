@@ -64,6 +64,5 @@ public class PriceTest {
         PriceRules applePrice = price(apple, LocalDate.of(2020, 5, 10));
 
         assertEquals(applePrice.getQuality(), 0);
-
     }
 }

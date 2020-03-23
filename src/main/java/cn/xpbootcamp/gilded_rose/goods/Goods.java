@@ -6,11 +6,11 @@ import java.time.LocalDate;
 
 public class Goods {
     private String name;
-    private Integer sellIn;
-    private Integer quality;
+    private int sellIn;
+    private int quality;
     private LocalDate manufacturing;
 
-    private Goods(String name, Integer sellIn, Integer quality, LocalDate manufacturing) {
+    private Goods(String name, int sellIn, int quality, LocalDate manufacturing) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
@@ -23,8 +23,8 @@ public class Goods {
 
     public static class Builder {
         private String name;
-        private Integer sellIn;
-        private Integer quality;
+        private int sellIn;
+        private int quality;
         private LocalDate manufacturing;
 
         public Builder name(String name) {
@@ -32,12 +32,12 @@ public class Goods {
             return this;
         }
 
-        public Builder sellIn(Integer sellIn) {
+        public Builder sellIn(int sellIn) {
             this.sellIn = sellIn;
             return this;
         }
 
-        public Builder quality(Integer quality) {
+        public Builder quality(int quality) {
             if (quality < 0) {
                 throw new InvalidQualityException("the quality of goods is lower than 0");
             }
@@ -62,11 +62,11 @@ public class Goods {
         return name;
     }
 
-    public Integer getSellIn() {
+    public int getSellIn() {
         return sellIn;
     }
 
-    public Integer getQuality() {
+    public int getQuality() {
         return quality;
     }
 
