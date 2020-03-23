@@ -15,6 +15,7 @@ public class RulesHandler {
                 .put(COMMON, new CommonRules())
                 .put(AGED_BRIE, new AgedBrieRules())
                 .put(SULFURAS, new SulfurasRules())
+                .put(BACKSTAGE_PASS, new BackstagePass())
                 .build();
         return rules.get(goods.getType()).quality(goods, date);
     }

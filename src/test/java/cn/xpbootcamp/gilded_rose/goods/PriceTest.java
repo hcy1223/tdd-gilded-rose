@@ -4,7 +4,7 @@ import cn.xpbootcamp.gilded_rose.Exceptions.InvalidDateException;
 import cn.xpbootcamp.gilded_rose.TestBase;
 import org.junit.jupiter.api.Test;
 
-import static cn.xpbootcamp.gilded_rose.goods.Goods.createGoods;
+import static cn.xpbootcamp.gilded_rose.goods.Goods.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -62,7 +62,7 @@ public class PriceTest extends TestBase {
 
     @Test
     void should_get_the_price_of_aged_brie() {
-        Goods agedBrie = Goods.createAgedBrie()
+        Goods agedBrie = createAgedBrie()
                 .name("aged brie")
                 .sellIn(10)
                 .quality(11)
@@ -75,11 +75,30 @@ public class PriceTest extends TestBase {
 
     @Test
     void should_get_instant_the_price_of_sulfuras() {
-        Goods sulfuras = Goods.createSulfuras()
+        Goods sulfuras = createSulfuras()
                 .name("sulfuras")
                 .quality(11)
                 .manufacturing(date(2020, 3, 1))
                 .build();
-        assertEquals(sulfuras.getQuality(date(2020,4,1)), 11);
+        assertEquals(sulfuras.getQuality(date(2020, 4, 1)), 11);
     }
+
+    @Test
+    void should_get_price_of_backstage_pass() {
+        Goods backstagePass = createBackstagePass()
+                .name("backstage pass")
+                .sellIn(15)
+                .quality(3)
+                .manufacturing(date(2020, 3, 1))
+                .build();
+//        3+3
+        assertEquals(backstagePass.getQuality(date(2020,3,4)), 6);
+//        3+5+3*2
+        assertEquals(backstagePass.getQuality(date(2020,3,9)), 14);
+//        3+5+5*2+2*3
+        assertEquals(backstagePass.getQuality(date(2020,3,13)), 24);
+
+        assertEquals(backstagePass.getQuality(date(2020,4,1)), 0);
+    }
+
 }
