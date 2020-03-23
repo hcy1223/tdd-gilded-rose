@@ -92,13 +92,13 @@ public class PriceTest extends TestBase {
                 .manufacturing(date(2020, 3, 1))
                 .build();
 //        3+3
-        assertEquals(backstagePass.getQuality(date(2020,3,4)), 6);
+        assertEquals(backstagePass.getQuality(date(2020, 3, 4)), 6);
 //        3+5+3*2
-        assertEquals(backstagePass.getQuality(date(2020,3,9)), 14);
+        assertEquals(backstagePass.getQuality(date(2020, 3, 9)), 14);
 //        3+5+5*2+2*3
-        assertEquals(backstagePass.getQuality(date(2020,3,13)), 24);
+        assertEquals(backstagePass.getQuality(date(2020, 3, 13)), 24);
 
-        assertEquals(backstagePass.getQuality(date(2020,4,1)), 0);
+        assertEquals(backstagePass.getQuality(date(2020, 4, 1)), 0);
     }
 
     @Test
@@ -110,11 +110,25 @@ public class PriceTest extends TestBase {
                 .manufacturing(date(2020, 3, 1))
                 .build();
 //        3+3*2
-        assertEquals(backstagePass.getQuality(date(2020,3,4)), 9);
+        assertEquals(backstagePass.getQuality(date(2020, 3, 4)), 9);
 //        3+4*2+3*3
-        assertEquals(backstagePass.getQuality(date(2020,3,8)), 20);
+        assertEquals(backstagePass.getQuality(date(2020, 3, 8)), 20);
 
-        assertEquals(backstagePass.getQuality(date(2020,4,1)), 0);
+        assertEquals(backstagePass.getQuality(date(2020, 4, 1)), 0);
 
+    }
+
+    @Test
+    void should_get_price_of_backstage_pass_when_sellIn_lower_than_five() {
+        Goods backstagePass = createBackstagePass()
+                .name("backstage pass")
+                .sellIn(5)
+                .quality(3)
+                .manufacturing(date(2020, 3, 1))
+                .build();
+//        3+3*3
+        assertEquals(backstagePass.getQuality(date(2020, 3, 4)), 12);
+
+        assertEquals(backstagePass.getQuality(date(2020, 4, 1)), 0);
     }
 }
